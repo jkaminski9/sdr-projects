@@ -10,7 +10,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: rtl_scan
+    id: rtl_fm_receiver
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -85,16 +85,28 @@ blocks:
     rangeType: float
     start: '0'
     step: '1'
-    stop: '10'
+    stop: '15'
     value: '3'
     widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [400, 108.0]
+    coordinate: [392, 192.0]
     rotation: 0
     state: true
+- name: b
+  id: variable
+  parameters:
+    comment: ''
+    value: '[0.5, 0, -0.5]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 76.0]
+    rotation: 0
+    state: enabled
 - name: flo
   id: variable
   parameters:
@@ -105,6 +117,18 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [448, 12.0]
+    rotation: 0
+    state: enabled
+- name: input_idx
+  id: variable
+  parameters:
+    comment: ''
+    value: 1 if use_envelope == False else 0
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [552, 12.0]
     rotation: 0
     state: enabled
 - name: output_idx
@@ -135,7 +159,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '228000'
+    value: 228e3
   states:
     bus_sink: false
     bus_source: false
@@ -174,7 +198,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 540.0]
+    coordinate: [512, 604.0]
     rotation: 0
     state: enabled
 - name: audio_sink_0
@@ -191,7 +215,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1328, 364.0]
+    coordinate: [1288, 492.0]
     rotation: 0
     state: enabled
 - name: audio_sink_0_0
@@ -208,7 +232,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1168, 548.0]
+    coordinate: [904, 564.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_real_0
@@ -224,9 +248,28 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [728, 272.0]
+    coordinate: [552, 312.0]
     rotation: 0
-    state: true
+    state: enabled
+- name: blocks_delay_0
+  id: blocks_delay
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    delay: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [936, 372.0]
+    rotation: 0
+    state: enabled
 - name: blocks_multiply_const_vxx_0
   id: blocks_multiply_const_vxx
   parameters:
@@ -242,9 +285,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1168, 364.0]
+    coordinate: [1040, 492.0]
     rotation: 0
-    state: enabled
+    state: true
 - name: blocks_multiply_xx_0
   id: blocks_multiply_xx
   parameters:
@@ -260,9 +303,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1144, 240.0]
+    coordinate: [1040, 280.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: blocks_selector_0
   id: blocks_selector
   parameters:
@@ -286,6 +329,29 @@ blocks:
     coordinate: [336, 348.0]
     rotation: 0
     state: enabled
+- name: blocks_selector_0_0
+  id: blocks_selector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    enabled: 'True'
+    input_index: input_idx
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    num_outputs: '1'
+    output_index: '0'
+    showports: 'True'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1136, 564.0]
+    rotation: 0
+    state: enabled
 - name: blocks_threshold_ff_0
   id: blocks_threshold_ff
   parameters:
@@ -301,9 +367,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [984, 156.0]
+    coordinate: [904, 196.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: dc_blocker_xx_0
   id: dc_blocker_xx
   parameters:
@@ -319,7 +385,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [568, 260.0]
+    coordinate: [552, 372.0]
     rotation: 0
     state: true
 - name: fir_filter_xxx_0
@@ -332,13 +398,26 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
-    taps: (-1, 0, 1)
+    taps: (-1, 1)
     type: fff
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [888, 260.0]
+    coordinate: [720, 300.0]
+    rotation: 0
+    state: true
+- name: import_0
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: import numpy
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [984, 100.0]
     rotation: 0
     state: true
 - name: low_pass_filter_0
@@ -362,7 +441,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [552, 500.0]
+    coordinate: [336, 564.0]
     rotation: 0
     state: enabled
 - name: low_pass_filter_0_0
@@ -372,7 +451,7 @@ blocks:
     alias: ''
     beta: '6.76'
     comment: ''
-    cutoff_freq: '100000'
+    cutoff_freq: 20e3
     decim: '1'
     gain: '1'
     interp: '1'
@@ -380,13 +459,13 @@ blocks:
     minoutbuf: '0'
     samp_rate: 'samp_rate '
     type: fir_filter_fff
-    width: '10000'
+    width: '5000'
     win: firdes.WIN_HAMMING
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1296, 196.0]
+    coordinate: [1152, 244.0]
     rotation: 0
     state: enabled
 - name: note_0
@@ -402,6 +481,35 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [624, 140.0]
+    rotation: 0
+    state: true
+- name: qtgui_sink_x_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate / 5
+    comment: ''
+    fc: '0'
+    fftsize: '1024'
+    gui_hint: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: float
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1360, 572.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_0
@@ -421,9 +529,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [976, 340.0]
+    coordinate: [1344, 268.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: rational_resampler_xxx_0_0
   id: rational_resampler_xxx
   parameters:
@@ -441,7 +549,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [968, 524.0]
+    coordinate: [720, 588.0]
     rotation: 0
     state: enabled
 - name: rtlsdr_source_0
@@ -800,23 +908,27 @@ blocks:
     bus_structure: null
     coordinate: [56, 300.0]
     rotation: 0
-    state: true
+    state: enabled
 
 connections:
 - [analog_wfm_rcv_0, '0', rational_resampler_xxx_0_0, '0']
 - [blocks_complex_to_real_0, '0', fir_filter_xxx_0, '0']
+- [blocks_delay_0, '0', blocks_multiply_xx_0, '1']
 - [blocks_multiply_const_vxx_0, '0', audio_sink_0, '0']
+- [blocks_multiply_const_vxx_0, '0', blocks_selector_0_0, '0']
 - [blocks_multiply_xx_0, '0', low_pass_filter_0_0, '0']
 - [blocks_selector_0, '0', dc_blocker_xx_0, '0']
 - [blocks_selector_0, '1', low_pass_filter_0, '0']
+- [blocks_selector_0_0, '0', qtgui_sink_x_0, '0']
 - [blocks_threshold_ff_0, '0', blocks_multiply_xx_0, '0']
 - [dc_blocker_xx_0, '0', blocks_complex_to_real_0, '0']
-- [fir_filter_xxx_0, '0', blocks_multiply_xx_0, '1']
+- [fir_filter_xxx_0, '0', blocks_delay_0, '0']
 - [fir_filter_xxx_0, '0', blocks_threshold_ff_0, '0']
 - [low_pass_filter_0, '0', analog_wfm_rcv_0, '0']
 - [low_pass_filter_0_0, '0', rational_resampler_xxx_0, '0']
 - [rational_resampler_xxx_0, '0', blocks_multiply_const_vxx_0, '0']
 - [rational_resampler_xxx_0_0, '0', audio_sink_0_0, '0']
+- [rational_resampler_xxx_0_0, '0', blocks_selector_0_0, '1']
 - [rtlsdr_source_0, '0', blocks_selector_0, '0']
 
 metadata:
