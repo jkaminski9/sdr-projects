@@ -271,7 +271,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1040, 492.0]
+    coordinate: [1040, 484.0]
     rotation: 0
     state: true
 - name: blocks_multiply_xx_0
