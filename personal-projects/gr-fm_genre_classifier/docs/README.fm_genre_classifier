@@ -1,0 +1,11 @@
+This is the fm_genre_classifier-write-a-block package meant as a guide to building
+out-of-tree packages. To use the fm_genre_classifier blocks, the Python namespaces
+is in 'fm_genre_classifier', which is imported as:
+
+    import fm_genre_classifier
+
+See the Doxygen documentation for details about the blocks available
+in this package. A quick listing of the details can be found in Python
+after importing by using:
+
+    help(fm_genre_classifier)

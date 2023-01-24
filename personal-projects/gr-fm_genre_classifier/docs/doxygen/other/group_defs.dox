@@ -1,0 +1,7 @@
+/*!
+ * \defgroup block GNU Radio FM_GENRE_CLASSIFIER C++ Signal Processing Blocks
+ * \brief All C++ blocks that can be used from the FM_GENRE_CLASSIFIER GNU Radio
+ *        module are listed here or in the subcategories below.
+ *
+ */
+
